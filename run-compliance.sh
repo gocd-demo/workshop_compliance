@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-#fail the "test"
+# change to exit 1 to afail the "test"
 
 exit 0
