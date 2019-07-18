@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker run $ARTIFACT_IMAGE npm test
+#fail the "test"
+
+exit 1
