@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo "run compliance"
+docker run $ARTIFACT_IMAGE npm test
