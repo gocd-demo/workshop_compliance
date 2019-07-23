@@ -1,0 +1,32 @@
+format_version: 4
+pipelines:
+  compliance:
+    group: kubernetes
+    display_order: 100
+    materials:
+      upstream:
+        pipeline: build_and_package
+        stage: build_stage
+      SourceCodeRepo:
+        git: https://github.com/gocd-demo/workshop_compliance.git
+        shallow_clone: false
+    stages:
+    - compliance_stage:
+        approval:
+          type: success
+        jobs:
+          compliance_job:
+            elastic_profile_id: demo-app
+            tasks:
+            - fetch:
+                options:
+                artifact_id: bulletin-board
+                pipeline: build_and_package
+                stage: build_stage
+                job: build_image
+                artifact_origin: external
+                run_if: passed
+            - exec:
+                command: ./run-compliance.sh
+                arguments:
+                run_if: passed
