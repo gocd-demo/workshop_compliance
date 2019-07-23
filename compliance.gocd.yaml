@@ -27,6 +27,7 @@ pipelines:
                 artifact_origin: external
                 run_if: passed
             - exec:
-                command: ./run-compliance.sh
+                command: /bin/bash
                 arguments:
-                run_if: passed
+                - -c
+                - docker run -t $ARTIFACT_IMAGE npm test
