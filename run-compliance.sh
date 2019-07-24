@@ -2,4 +2,4 @@
 
 # change to exit 1 to afail the "test"
 
-exit 0
+exit 1
